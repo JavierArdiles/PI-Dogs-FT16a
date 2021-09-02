@@ -56,25 +56,47 @@ router.get('/dogs', async (req, res) => {
     let allDogs = await getAllDogs();
     if (name) {
         let dogName = await allDogs.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
-        dogName.length ? res.status(200).send(dogName) : res.status(404).send('😬 Sorry, we don´t have that dog breed 🤷‍♂️');
+        dogName.length ? res.status(200).send(dogName) : res.status(404).send('😬 Sorry, looks like we don´t have that dog breed 🤷‍♂️');
     } else {
         res.status(200).send(allDogs)
     }
 });
 
-router.get('/temperament', async (req, res) => {
+router.get('/temperament', async (_req, res) => {
     const infoApi = await axios.get('https://api.thedogapi.com/v1/breeds');
-    const temperamentsRepeated = await infoApi.data.map(el => el.temperament);
-    const allTemps = temperamentsRepeated.join();
-    const allSeparated = allTemps.toString().split(',');
-    for(let i = 0; i < allSeparated.length; i++){
-        let el = allSeparated[i].toString();
-        if( el[0] === ' ' ){
-            el.split();
+    const tempsRepeated = await infoApi.data.map(el => el.temperament);
+    
+    const allTemps = await tempsRepeated.map(el => {
+        if(typeof(el) === 'string'){
+            return el.split(', ')
         }
-    }
-    const l = [allSeparated.length];
-    res.status(200).send(allSeparated);
+    });
+    
+    const temps = allTemps.map(el => {
+        for(let i = 0; i < el.length; i++){
+            return el[i];
+        }
+    });
+    temps.forEach(el => {
+        Temperament.findOrCreate({
+            where: { name: el }
+        })
+    });
+    const allTemperaments = await Temperament.findAll();
+    
+    
+    // const allTemps = tempsRepeated.join();
+    // const allSeparated = allTemps.split(',');
+    // const each = allSeparated.map(el => {
+    //     if(el[0] === ' '){
+    //         el = el.split(' ');
+    //         el.shift();
+    //         el.flat();
+    //         return el;
+    //     }
+    // })
+
+    res.status(200).send(allTemperaments);
     // const temperamentsFiltered = [];
     // for(let i = 0; i < temperamentsRepeated.length; i++){
     //     if(!temperamentsFiltered.includes( temperamentsRepeated[i] )){

@@ -6,6 +6,8 @@ module.exports = (sequelize) => {
   sequelize.define('race', {
     id: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     name: {

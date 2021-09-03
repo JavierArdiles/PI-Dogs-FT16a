@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const { Race, Temperament } = require('../db');
 
-
+const {YOUR_API_KEY} = process.env;
 const router = Router();
 
 // Configurar los routers
@@ -17,7 +17,7 @@ const router = Router();
 // router.use('/temperaments', TempRouter);
 
 const getApiInfo = async () => {
-    const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds');
+    const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
     const apiInfo = await apiUrl.data.map(el => {
         return {
             id: el.id,

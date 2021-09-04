@@ -2,11 +2,9 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
-// const RaceRouter = require('./race');
-// const TempRouter = require('./temperament');
 const { YOUR_API_KEY } = process.env;
-require('dotenv').config();
 const { Race, Temperament } = require('../db');
+require('dotenv').config();
 
 const router = Router();
 
@@ -115,7 +113,6 @@ router.post('/dogs', async (req, res) => {
             name: temperament,
         }
     });
-    console.log(temperamentDB);
     raceCreated.addTemperament(temperamentDB);
     res.status(200).send('🐕 Race created successfully 🐶')
 });

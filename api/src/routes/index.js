@@ -4,7 +4,7 @@ const { Router } = require('express');
 const axios = require('axios');
 // const RaceRouter = require('./race');
 // const TempRouter = require('./temperament');
-const {YOUR_API_KEY} = process.env;
+const { YOUR_API_KEY } = process.env;
 require('dotenv').config();
 const { Race, Temperament } = require('../db');
 
@@ -66,18 +66,60 @@ router.get('/temperament', async (_req, res) => {
     let infoApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
     let tempsRepeated = infoApi.data.map(el => el.temperament).toString();
     tempsRepeated = await tempsRepeated.split(',');
+    const tempsConEspacio = await tempsRepeated.map(el => {
+        if (el[0] == ' ') {
+            return el.split('');
+        }
+        return el;
+    });
+    const tempsSinEspacio = await tempsConEspacio.map(el => {
+        if (Array.isArray(el)) {
+            el.shift();
+            return el.join('');
+        }
+        return el;
+    })
 
-    const tempsToDb = tempsRepeated.forEach(el => {
-        Temperament.findOrCreate({ //si no lo encuentra lo crea, sino no hace nada.
-          where: { 
-            id: el.id,
-            name: el },
-        });
+    await tempsSinEspacio.forEach(el => {
+        if (el != '') {
+            Temperament.findOrCreate({ //si no lo encuentra lo crea, sino no hace nada.
+                where: {
+                    name: el
+                },
+            });
+        }
     });
     const allTemps = await Temperament.findAll(); //traigo todos los temperamentos
-    res.status(200).send(tempsRepeated);
-    
-})
+    res.status(200).send(allTemps);
+
+});
+
+router.post('/dogs', async (req, res) => {
+    let {
+        name,
+        height,
+        weight,
+        life_span,
+        image,
+        temperament,
+    } = req.body;
+    let raceCreated = await Race.create({
+        name,
+        height,
+        weight,
+        life_span,
+        image,
+    });
+    let temperamentDB = await Temperament.findAll({
+        where: {
+            name: temperament,
+        }
+    });
+    console.log(temperamentDB);
+    raceCreated.addTemperament(temperamentDB);
+    res.status(200).send('🐕 Race created successfully 🐶')
+});
+
 
 module.exports = router;
 
@@ -87,7 +129,7 @@ router.get("/temperament", async (req, res) => {
     const temperamentApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     let temperaments = temperamentApi.data.map((ob) => ob.temperament).toString();
     temperaments = await temperaments.split(",");
-    
+
     const tempToDb = temperaments.forEach((ob) => {
       Temperament.findOrCreate({ //si no lo encuentra lo crea, sino no hace nada.
         where: { name: ob },

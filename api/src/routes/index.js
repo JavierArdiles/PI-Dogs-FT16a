@@ -60,6 +60,15 @@ router.get('/dogs', async (req, res) => {
     }
 });
 
+router.get('/dogs/:raceId', async (req, res) => {
+    const { raceId } = req.params;
+    const allRaces = await getAllDogs();
+    if (raceId) {
+        let race = await allRaces.filter(el => el.id == raceId);
+        race.length ? res.status(200).json(race) : res.status(404).send(`Sorry, we don´t have a race with ${raceId} as ID 🤷‍♀️`);
+    }
+})
+
 router.get('/temperament', async (_req, res) => {
     let infoApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
     let tempsRepeated = infoApi.data.map(el => el.temperament).toString();
@@ -120,20 +129,3 @@ router.post('/dogs', async (req, res) => {
 
 
 module.exports = router;
-
-
-/*
-router.get("/temperament", async (req, res) => {
-    const temperamentApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-    let temperaments = temperamentApi.data.map((ob) => ob.temperament).toString();
-    temperaments = await temperaments.split(",");
-
-    const tempToDb = temperaments.forEach((ob) => {
-      Temperament.findOrCreate({ //si no lo encuentra lo crea, sino no hace nada.
-        where: { name: ob },
-      });
-    });
-    const allTemperaments = await Temperament.findAll(); //traigo todos los temperamentos
-    res.send(allTemperaments);
-  });
-  */

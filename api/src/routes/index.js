@@ -113,6 +113,7 @@ router.post('/dogs', async (req, res) => {
             name: temperament,
         }
     });
+    console.log(temperamentDB);
     raceCreated.addTemperament(temperamentDB);
     res.status(200).send('🐕 Race created successfully 🐶')
 });

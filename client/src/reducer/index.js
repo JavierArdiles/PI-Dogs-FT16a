@@ -1,5 +1,5 @@
 const initialState = {
-    dogs = []
+    dogs : []
 }
 
 function rootReducer(state = initialState, action){
@@ -9,6 +9,8 @@ function rootReducer(state = initialState, action){
                 ...state,
                 dogs: action.payload // en mi estado dogs, que en un principio es un arreglo vacío, manda todo lo que te mande la acción get_dogs
             }
+        default:
+            return state;
     }
 }
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const GET_DOGS = 'GET_DOGS';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
+export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 
 export function getDogs(){
     return async function(dispatch){
@@ -25,9 +26,15 @@ export function getTemperaments(){
 }
 
 export function filterDogsByTemperament(payload){
-    console.log(payload);
     return {
         type: FILTER_BY_TEMPERAMENT,
         payload
+    }
+}
+
+export function filterDogsByOrigin(payload){
+    return {
+        type: FILTER_BY_ORIGIN,
+        payload,
     }
 }

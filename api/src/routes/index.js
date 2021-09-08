@@ -23,7 +23,7 @@ const getApiInfo = async () => {
             height: el.height.metric,
             weight: el.weight.metric,
             life_span: el.life_span,
-            temperament: el.temperament,
+            temperaments: el.temperament,
             image: el.image.url,
         }
     });
@@ -108,18 +108,18 @@ router.post('/dogs', async (req, res) => {
         weight,
         life_span,
         image,
-        temperament,
+        temperaments,
     } = req.body;
     let raceCreated = await Race.create({
         name,
-        height,
-        weight,
-        life_span,
+        height: height + ' cm',
+        weight: weight + ' kg',
+        life_span: life_span + ' years',
         image,
     });
     let temperamentDB = await Temperament.findAll({
         where: {
-            name: temperament,
+            name: temperaments,
         }
     });
     console.log(temperamentDB);
@@ -129,3 +129,5 @@ router.post('/dogs', async (req, res) => {
 
 
 module.exports = router;
+
+// todos los temperaments eran temperament

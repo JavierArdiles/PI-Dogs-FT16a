@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemperaments, filterDogsByTemperament } from "../actions";
+import { getDogs, getTemperaments, filterDogsByTemperament, filterDogsByOrigin } from "../actions";
 import { Link } from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -14,7 +14,7 @@ export default function Home() {
     // Es mas facil porque de esta manera me declaro una constante y con useSelector me traigo en esa constante
     // todo lo que está en el estado de dogs.
     const [currentPage, setCurrentPage] = useState(1); // En una constante me guardo el estado actual y la otra me setea el estado actual. El state inicial es 1 porque empiezo en la primer página.
-    const [dogsPerPage, setDogsPerPage] = useState(8); // Me guardo cuantos perros quiero por página.
+    const [dogsPerPage, /*_setDogsPerPage*/] = useState(8); // Me guardo cuantos perros quiero por página.
     const indexOfLastDog = currentPage * dogsPerPage; // El índice del último perro de cada página va a ser el numero de la página multiplicado por la cantidad de perros por página.
     const indexOfFirstDog = indexOfLastDog - dogsPerPage; // El índice del primer perro de cada página va a ser el índice del último de esa página menos la cantidad de perros por página.
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog); // Los perros mostrados en cada página serán los que estén en la porción que va desde el primero hasta el último de cada página, de la lista total de perros.
@@ -40,6 +40,10 @@ export default function Home() {
 
     function handleFilterTemperaments(e) {
         dispatch(filterDogsByTemperament(e.target.value))
+    }
+
+    function handleFilterOrigin(e) {
+        dispatch(filterDogsByOrigin(e.target.value))
     }
 
     return (
@@ -70,9 +74,9 @@ export default function Home() {
                         )
                     })}
                 </select>
-                <select>
+                <select onChange={e => handleFilterOrigin(e)}>
                     <option value='all'>Todas las razas</option>
-                    <option value='existent'>Razas existentes</option>
+                    <option value='api'>Razas existentes</option>
                     <option value='created'>Razas creadas</option>
                 </select>
                 <hr/>
@@ -86,7 +90,7 @@ export default function Home() {
                             return (
                                 <div key={el.id}>
                                     <Link to={'/home/' + el.id} >
-                                        <Card name={el.name} image={el.image} temperament={el.temperament} weigth={el.weight} key={el.id} />
+                                        <Card name={el.name} image={el.image} temperaments={el.temperaments} weigth={el.weight} key={el.id} />
                                     </Link>
                                     <hr />
                                 </div>

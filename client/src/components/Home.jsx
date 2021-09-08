@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemperaments, filterDogsByTemperament, filterDogsByOrigin } from "../actions";
+import { getDogs, getTemperaments, filterDogsByTemperament, filterDogsByOrigin, sortByName, sortByWeight } from "../actions";
 import { Link } from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -18,6 +18,8 @@ export default function Home() {
     const indexOfLastDog = currentPage * dogsPerPage; // El índice del último perro de cada página va a ser el numero de la página multiplicado por la cantidad de perros por página.
     const indexOfFirstDog = indexOfLastDog - dogsPerPage; // El índice del primer perro de cada página va a ser el índice del último de esa página menos la cantidad de perros por página.
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog); // Los perros mostrados en cada página serán los que estén en la porción que va desde el primero hasta el último de cada página, de la lista total de perros.
+
+    const [/*orden*/, setOrden] = useState(''); // Estado local que me sirve para modificar el estado cuando ordeno y renderizar los perros ordenados como quiero.
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -46,6 +48,20 @@ export default function Home() {
         dispatch(filterDogsByOrigin(e.target.value))
     }
 
+    function handleSortByName(e){
+        e.preventDefault();
+        dispatch(sortByName(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
+    }
+
+    function handleSortByWeight(e){
+        e.preventDefault();
+        dispatch(sortByWeight(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
+    }
+
     return (
         <div>
             <Link to='/dogs' >CREAR UNA RAZA</Link>
@@ -54,15 +70,13 @@ export default function Home() {
                 Volver a cargar todos los perros
             </button>
             <div>
-                <select>
-                    <option value='sin' >Orden alfabético</option>
-                    <option value='alf' >A - Z</option>
-                    <option value='inv' >Z - A</option>
+                <select onChange={e => handleSortByName(e)}>
+                    <option value='asc' >A - Z</option>
+                    <option value='desc' >Z - A</option>
                     {/* El value me permite después cuando haga la lógica decir, si el option tiene value alf, hacé
                         tal cosa; si tiene value inv, hacé tal otra*/}
                 </select>
-                <select>
-                    <option value='sin'>Orden por peso</option>
+                <select onChange={e => handleSortByWeight(e)}>
                     <option value='asc'>Peso ascendente</option>
                     <option value='desc'>Peso descendente</option>
                 </select>

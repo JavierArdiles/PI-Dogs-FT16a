@@ -20,8 +20,10 @@ const getApiInfo = async () => {
         return {
             id: el.id,
             name: el.name,
-            height: el.height.metric,
-            weight: el.weight.metric,
+            heightMin: el.height.metric.split(' - ')[0],
+            heightMax: el.height.metric.split(' - ')[1],
+            weightMin: el.weight.metric.split(' - ')[0] === 'NaN' ? '0' : el.weight.metric.split(' - ')[0],
+            weightMax: el.weight.metric.split(' - ')[1],
             life_span: el.life_span,
             temperaments: el.temperament,
             image: el.image.url,
@@ -104,16 +106,20 @@ router.get('/temperament', async (_req, res) => {
 router.post('/dogs', async (req, res) => {
     let {
         name,
-        height,
-        weight,
+        heightMin,
+        heightMax,
+        weightMin,
+        weightMax,
         life_span,
         image,
         temperaments,
     } = req.body;
     let raceCreated = await Race.create({
         name,
-        height: height + ' cm',
-        weight: weight + ' kg',
+        heightMin,
+        heightMax,
+        weightMin,
+        weightMax,
         life_span: life_span + ' years',
         image,
     });

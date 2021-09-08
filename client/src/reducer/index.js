@@ -1,4 +1,11 @@
-import { GET_DOGS, GET_TEMPERAMENTS, FILTER_BY_TEMPERAMENT, FILTER_BY_ORIGIN } from "../actions";
+import {
+    GET_DOGS,
+    GET_TEMPERAMENTS,
+    FILTER_BY_TEMPERAMENT,
+    FILTER_BY_ORIGIN,
+    SORT_BY_NAME,
+    SORT_BY_WEIGHT
+} from "../actions";
 
 const initialState = {
     dogs : [],
@@ -40,9 +47,71 @@ function rootReducer(state = initialState, action){
                 ...state,
                 dogs: originFiltered
             }
+        case SORT_BY_NAME:
+            const sortedName = action.payload === 'asc' ?
+                state.dogs.sort(function(a, b){
+                    if(a.name > b.name) {
+                        return 1;
+                    }
+                    if(b.name > a.name) {
+                        return -1;
+                    }
+                    return 0
+                }) :
+                state.dogs.sort(function(a, b){
+                    if(a.name > b.name){
+                        return -1;
+                    }
+                    if(b.name > a.name){
+                        return 1;
+                    }
+                    return 0;
+                })
+            return {
+                ...state,
+                dogs: sortedName,
+            }
+        
+        case SORT_BY_WEIGHT:
+            const sortedWeight = action.payload === 'asc' ?
+                state.dogs.sort(function(a,b){
+                    if(a.weightMin < b.weightMin) return 1;
+                    if(a.weightMin > b.weightMin) return -1;
+                    return 0;
+                }) :
+                state.dogs.sort(function(a,b){
+                    if(a.weightMin > b.weightMin) return 1;
+                    if(a.weightMin < b.weightMin) return -1;
+                    return 0;
+                });
+            return {
+                ...state,
+                dogs: sortedWeight,
+            }
+
         default:
             return state;
     }
 }
 
 export default rootReducer;
+
+// const sortedArr = action.payload === 'asc' ?
+//                 state.dogs.sort(function(a, b){
+//                     if(a.name > b.name) {
+//                         return 1;
+//                     }
+//                     if(b.name > a.name) {
+//                         return -1;
+//                     }
+//                     return 0
+//                 }) :
+//                 state.dogs.sort(function(a, b){
+//                     if(a.name > b.name){
+//                         return -1;
+//                     }
+//                     if(b.name > a.name){
+//                         return 1;
+//                     }
+//                     return 0;
+//                 })

@@ -5,6 +5,7 @@ import { getDogs, getTemperaments, filterDogsByTemperament, filterDogsByOrigin, 
 import { Link } from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
     const dispatch = useDispatch(); // para usar esa constante para ir despachando mis acciones.
@@ -64,8 +65,9 @@ export default function Home() {
 
     return (
         <div>
-            <Link to='/dogs' >CREAR UNA RAZA</Link>
             <h1>PI DOGS</h1>
+            <Link to='/dogs' >CREAR UNA RAZA</Link>
+            <hr/>
             <button onClick={e => { handleClick(e) }} >
                 Volver a cargar todos los perros
             </button>
@@ -94,6 +96,7 @@ export default function Home() {
                     <option value='created'>Razas creadas</option>
                 </select>
                 <hr/>
+                <SearchBar/>
 
                 <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
                 <hr/>

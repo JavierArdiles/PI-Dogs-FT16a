@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
+import DogCreate from './components/DogCreate';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
                      funcionar bien sin usarlo pero es buena práctica usarlo. */}
           <Route exact path='/' component={LandingPage} />
           <Route path='/home' component={Home} />
+          <Route path='/dogs' component={DogCreate} />
         </Switch>
       </div>
     </BrowserRouter>

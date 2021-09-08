@@ -20,8 +20,8 @@ const getApiInfo = async () => {
         return {
             id: el.id,
             name: el.name,
-            heightMin: el.height.metric.split(' - ')[0],
-            heightMax: el.height.metric.split(' - ')[1],
+            heightMin: el.height.metric.split(' - ')[1] ? el.height.metric.split(' - ')[0] : '0',
+            heightMax: el.height.metric.split(' - ')[1] ? el.height.metric.split(' - ')[1] : el.height.metric.split(' - ')[0],
             weightMin: el.weight.metric.split(' - ')[0] === 'NaN' ? '0' : el.weight.metric.split(' - ')[0],
             weightMax: el.weight.metric.split(' - ')[1],
             life_span: el.life_span,

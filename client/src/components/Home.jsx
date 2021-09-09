@@ -82,8 +82,8 @@ export default function Home() {
                 </select>
                 <select onChange={e => handleSortByWeight(e)} >
                     <option value='' disabled selected hidden>Sort by weight</option>
-                    <option value='asc'>Heavier to lighter</option>
-                    <option value='desc'>Lighter to heavier</option>
+                    <option value='asc'>Lighter to heavier</option>
+                    <option value='desc'>Heavier to lighter</option>
                 </select>
                 <select onChange={e => handleFilterTemperaments(e)}>
                     <option key={0} value='all'>All temperaments</option>
@@ -114,7 +114,14 @@ export default function Home() {
                             return (
                                 <div key={el.id}>
                                     <Link to={'/home/' + el.id} >
-                                        <Card name={el.name} image={el.image} temperaments={el.temperaments} weigth={el.weight} key={el.id} />
+                                        <Card
+                                            name={el.name}
+                                            image={el.image}
+                                            temperaments={el.temperaments}
+                                            weightMin={el.weightMin}
+                                            weightMax={el.weightMax}
+                                            key={el.id}
+                                        />
                                     </Link>
                                     <hr />
                                 </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ image, name, temperaments, weight }) {
+export default function Card({ image, name, temperaments, weightMin, weightMax }) {
     return (
         <div>
             <h3>{name}</h3>
@@ -13,8 +13,8 @@ export default function Card({ image, name, temperaments, weight }) {
                     return temps.join(', ');
                 }
             }(temperaments)}</h5>
-            <p>{weight}</p>
             <img src={image} alt={`${name}`} width='250px' heigth='200px' />
+            <p>Weight: {weightMin} - {weightMax} kg</p>
         </div>
     )
 }

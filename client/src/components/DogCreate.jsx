@@ -58,7 +58,7 @@ export default function DogCreate() {
             image: '',
             temperaments: [],
         });
-        history.push('/home');
+        history.push('/home'); // Metodo del router que me redirige a la ruta que le paso
     }
 
     return (
@@ -67,31 +67,36 @@ export default function DogCreate() {
             <h1>🐕 Create your own dog race 🐶</h1>
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label>Name</label>
+                    <label>Name: </label>
                     <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Minimum height (cm)</label>
+                    <label>Minimum height: </label>
                     <input type='text' value={input.heightMin} name='heightMin' onChange={e => handleChange(e)} />
+                    <label> cm</label>
                 </div>
                 <div>
-                    <label>Maximum height (cm)</label>
+                    <label>Maximum height: </label>
                     <input type='text' value={input.heightMax} name='heightMax' onChange={e => handleChange(e)} />
+                    <label> cm</label>
                 </div>
                 <div>
-                    <label>Minimum weight (kg)</label>
+                    <label>Minimum weight: </label>
                     <input type='text' value={input.weightMin} name='weightMin' onChange={e => handleChange(e)} />
+                    <label> kg</label>
                 </div>
                 <div>
-                    <label>maximum weight (kg)</label>
+                    <label>Maximum weight: </label>
                     <input type='text' value={input.weightMax} name='weightMax' onChange={e => handleChange(e)} />
+                    <label> kg</label>
                 </div>
                 <div>
-                    <label>Expected life span</label>
+                    <label>Expected life span: </label>
                     <input type='text' value={input.life_span} name='life_span' onChange={e => handleChange(e)} />
+                    <label> years</label>
                 </div>
                 <div>
-                    <label>Image</label>
+                    <label>Image: </label>
                     <input type='text' value={input.image} name='image' onChange={e => handleChange(e)} />
                 </div>
                 <div>

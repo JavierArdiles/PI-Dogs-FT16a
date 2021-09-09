@@ -6,7 +6,7 @@ import { getNameDogs } from "../actions";
 export default function SearchBar(){
 
     const dispatch = useDispatch();
-    const [name, setName] = useState();
+    const [name, setName] = useState('');
 
     function handleInputChange(e){
         e.preventDefault();
@@ -17,12 +17,18 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(getNameDogs(name));
+        setName('');
     }
 
     return (
         <div>
-            <input type='text' placeholder='Buscar por raza...' onChange={e => handleInputChange(e)}/>
-            <button type='submit' onClick={e => handleSubmit(e)}>Buscar</button>
+            <input
+                type='text'
+                placeholder='Search by race...'
+                onChange={e => handleInputChange(e)}
+                value={name}
+            />
+            <button type='submit' onClick={e => handleSubmit(e)}>Fetch!</button>
         </div>
     )
 }

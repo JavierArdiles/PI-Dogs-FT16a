@@ -66,34 +66,41 @@ export default function Home() {
     return (
         <div>
             <h1>PI DOGS</h1>
-            <Link to='/dogs' >CREAR UNA RAZA</Link>
+            <Link to='/' ><button>Start</button></Link>
+            <Link to='/dogs' ><button>CREATE PUPPER</button></Link>
             <hr/>
             <button onClick={e => { handleClick(e) }} >
-                Volver a cargar todos los perros
+                Reload all doggies
             </button>
             <div>
-                <select onChange={e => handleSortByName(e)}>
+                <select onChange={e => handleSortByName(e)} >
+                    <option value='' disabled selected hidden >Sort by race name</option>
                     <option value='asc' >A - Z</option>
                     <option value='desc' >Z - A</option>
                     {/* El value me permite después cuando haga la lógica decir, si el option tiene value alf, hacé
                         tal cosa; si tiene value inv, hacé tal otra*/}
                 </select>
-                <select onChange={e => handleSortByWeight(e)}>
-                    <option value='asc'>Peso ascendente</option>
-                    <option value='desc'>Peso descendente</option>
+                <select onChange={e => handleSortByWeight(e)} >
+                    <option value='' disabled selected hidden>Sort by weight</option>
+                    <option value='asc'>Heavier to lighter</option>
+                    <option value='desc'>Lighter to heavier</option>
                 </select>
                 <select onChange={e => handleFilterTemperaments(e)}>
-                    <option key={0} value='all'>Todos los temperamentos</option>
-                    {allTemperaments?.map(el => {
+                    <option key={0} value='all'>All temperaments</option>
+                    {allTemperaments?.sort(function(a,b){
+                        if(a.name < b.name) return -1;
+                        if(a.name > b.name) return 1;
+                        return 0;
+                    }).map(el => {
                         return (
                             <option key={el.id} value={el.name}>{el.name}</option>
                         )
                     })}
                 </select>
                 <select onChange={e => handleFilterOrigin(e)}>
-                    <option value='all'>Todas las razas</option>
-                    <option value='api'>Razas existentes</option>
-                    <option value='created'>Razas creadas</option>
+                    <option value='all'>All races</option>
+                    <option value='api'>Existent races</option>
+                    <option value='created'>Created races</option>
                 </select>
                 <hr/>
                 <SearchBar/>

@@ -47,7 +47,7 @@ export default function DogCreate() {
         e.preventDefault();
         console.log(input);
         dispatch(postDog(input));
-        alert('Pichicho creado 👏');
+        alert('Doggie created 👏');
         setInput({
             name: '',
             heightMin: '',
@@ -63,40 +63,45 @@ export default function DogCreate() {
 
     return (
         <div>
-            <Link to='/home'><button>Volver</button></Link>
-            <h1>🐕 Crea tu raza de perro 🐶</h1>
+            <Link to='/home'><button>Home</button></Link>
+            <h1>🐕 Create your own dog race 🐶</h1>
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label>Nombre</label>
+                    <label>Name</label>
                     <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Altura mínima (cm)</label>
+                    <label>Minimum height (cm)</label>
                     <input type='text' value={input.heightMin} name='heightMin' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Altura máxima (cm)</label>
+                    <label>Maximum height (cm)</label>
                     <input type='text' value={input.heightMax} name='heightMax' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Peso mínimo (kg)</label>
+                    <label>Minimum weight (kg)</label>
                     <input type='text' value={input.weightMin} name='weightMin' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Peso máximo (kg)</label>
+                    <label>maximum weight (kg)</label>
                     <input type='text' value={input.weightMax} name='weightMax' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Años de vida</label>
+                    <label>Expected life span</label>
                     <input type='text' value={input.life_span} name='life_span' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <label>Imagen</label>
+                    <label>Image</label>
                     <input type='text' value={input.image} name='image' onChange={e => handleChange(e)} />
                 </div>
                 <div>
-                    <select onChange={e => handleSelect(e)}>
-                        {allTemperaments?.map(temp => {
+                    <select onChange={e => handleSelect(e)} >
+                        <option value='' disabled selected hidden >Temperaments</option>
+                        {allTemperaments?.sort(function (a, b) {
+                            if (a.name < b.name) return -1;
+                            if (a.name > b.name) return 1;
+                            return 0;
+                        }).map(temp => {
                             return (
                                 <option value={temp.name} key={temp.id}>{temp.name}</option>
                             )
@@ -104,7 +109,7 @@ export default function DogCreate() {
                     </select>
                     <ul><li>{input.temperaments.map(el => el + ', ')}</li></ul>
                 </div>
-                <button type='submit'>Crear firulais</button>
+                <button type='submit'>Boop</button>
 
             </form>
         </div>

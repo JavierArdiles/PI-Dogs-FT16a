@@ -3,66 +3,66 @@ import { Link, useHistory } from "react-router-dom";
 import { getTemperaments, postDog } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 
-function validate(input){
+function validate(input) {
     let errors = {};
-    if(!input.name){
+    if (!input.name) {
         errors.name = 'Your dog must have a name.';
     }
-    else if(input.name.length > 30){
+    else if (input.name.length > 30) {
         errors.name = 'That´s way too long a name. Keep it simple!!';
     }
-    else if(!input.heightMin){
+    else if (!input.heightMin) {
         errors.heightMin = 'Minimum height is required!!';
     }
-    else if(isNaN(parseInt(input.heightMin))){
+    else if (isNaN(parseInt(input.heightMin))) {
         errors.heightMin = 'Height should be a number.';
     }
-    else if(input.heightMin <= 0){
+    else if (input.heightMin <= 0) {
         errors.heightMin = 'Your dog can´t be shorter than 0.';
     }
-    else if(parseInt(input.heightMin) >= parseInt(input.heightMax)){
+    else if (parseInt(input.heightMin) >= parseInt(input.heightMax)) {
         errors.heightMin = 'Minimum height should be lower than maximum height.';
     }
-    else if(!input.heightMax){
+    else if (!input.heightMax) {
         errors.heightMax = 'Maximum height is required!!';
     }
-    else if(isNaN(parseInt(input.heightMax))){
+    else if (isNaN(parseInt(input.heightMax))) {
         errors.heightMax = 'Height should be a number.';
     }
-    else if(input.heightMax > 150){
+    else if (input.heightMax > 150) {
         errors.heightMax = 'I think 150cm is enough for a dog´s height, don´t you? 📏';
     }
-    else if(!input.weightMin){
+    else if (!input.weightMin) {
         errors.weightMin = 'Minimum weight is required!!';
     }
-    else if(isNaN(parseInt(input.weightMin))){
+    else if (isNaN(parseInt(input.weightMin))) {
         errors.weightMin = 'Weight should be a number.';
     }
-    else if(input.weightMin <= 0){
+    else if (input.weightMin <= 0) {
         errors.weightMin = 'Your dog must weight at least more than nothingness.';
     }
-    else if(!input.weightMax){
+    else if (!input.weightMax) {
         errors.weightMax = 'Maximum weight is required!!';
     }
-    else if(isNaN(parseInt(input.weightMax))){
+    else if (isNaN(parseInt(input.weightMax))) {
         errors.weightMax = 'Weight should be a number.';
     }
-    else if(input.weightMax <= input.weightMin){
+    else if (input.weightMax <= input.weightMin) {
         errors.weightMax = 'Maximum weight should be higher than minimum weight.';
     }
-    else if(input.weightMax > 200){
+    else if (input.weightMax > 200) {
         errors.weightMax = 'We are creating a dog, not an elephant 🐘 Keep your weight under 200.';
     }
-    else if(!input.life_span){
+    else if (!input.life_span) {
         errors.life_span = 'Life span is required!!';
     }
-    else if(isNaN(parseInt(input.life_span))){
+    else if (isNaN(parseInt(input.life_span))) {
         errors.life_span = 'Life span should be a number.';
     }
-    else if(input.life_span > 50){
+    else if (input.life_span > 50) {
         errors.life_span = 'Saddly, dogs don´t live that long 😥';
     }
-    else if(input.life_span <= 0){
+    else if (input.life_span <= 0) {
         errors.life_span = 'You don´t want your dog to live???? 😮';
     }
 
@@ -111,17 +111,19 @@ export default function DogCreate() {
     }
 
     function handleSelect(e) {
-        setInput({
-            ...input,
-            temperaments: [...input.temperaments, e.target.value]
-        });
-        console.log(input)
+        if(!input.temperaments.includes(e.target.value)){
+            setInput({
+                ...input,
+                temperaments: [...input.temperaments, e.target.value]
+            });
+            console.log(input);
+        }
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(errors);
-        if(!Object.getOwnPropertyNames(errors).length){
+        if (!Object.getOwnPropertyNames(errors).length) {
             dispatch(postDog(input));
             alert('Doggie created 👏');
             setInput({
@@ -134,10 +136,17 @@ export default function DogCreate() {
                 image: '',
                 temperaments: [],
             });
-            history.push('/home'); // Metodo del router que me redirige a la ruta que le paso
-        } else{
+            history.push('/home'); // Metodo del router que me redirige a la ruta que le paso. Functiona como Link.
+        } else {
             alert('Doggie can´t be created with these data 🤷‍♂️')
         }
+    }
+
+    function handleDeleteTemperament(el) {
+        setInput({
+            ...input,
+            temperaments: input.temperaments.filter(temp => temp !== el)
+        })
     }
 
     return (
@@ -209,9 +218,17 @@ export default function DogCreate() {
                             )
                         })}
                     </select>
-                    
-                    <ul><li>{input.temperaments.map(el => el + ', ')}</li></ul>
-                    
+
+                    {/*<ul><li>{input.temperaments.map(el => el + ', ')}</li></ul>*/}
+                    {input.temperaments.map(el => {
+                        return (
+                            <div key={el}>
+                                <p>{el}</p>
+                                <button onClick={() => handleDeleteTemperament(el)}>X</button>
+                            </div>
+                        )
+                    })}
+
                 </div>
                 <button type='submit'>Boop</button>
 

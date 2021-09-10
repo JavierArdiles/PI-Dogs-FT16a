@@ -5,13 +5,15 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_WEIGHT,
-    GET_NAME_DOGS
+    GET_NAME_DOGS,
+    GET_DETAIL
 } from "../actions";
 
 const initialState = {
     dogs : [],
     allDogs: [],// Esto lo voy a usar para los filtros. Para tener a todos los perros guardados siempre y no que me vayan cambiando los perros que tengo con cada filtro que haga.
-    temperaments: []
+    temperaments: [],
+    detail: []
 }
 
 function rootReducer(state = initialState, action){
@@ -95,6 +97,12 @@ function rootReducer(state = initialState, action){
         case 'POST_DOG':
             return{
                 ...state,
+            }
+
+        case GET_DETAIL:
+            return {
+                ...state,
+                detail: action.payload,
             }
 
         default:

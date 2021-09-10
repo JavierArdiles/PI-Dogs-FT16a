@@ -7,6 +7,7 @@ export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const SORT_BY_WEIGHT = 'SORT_BY_WEIGHT';
 export const GET_NAME_DOGS = 'GET_NAME_DOGS';
+export const GET_DETAIL = 'GET_DETAIL';
 
 export function getDogs(){
     return async function(dispatch){
@@ -75,5 +76,19 @@ export function postDog(payload){
         const response = axios.post('http://localhost:3001/dogs', payload);
         console.log(response);
         return response;
+    }
+}
+
+export function getDetail(id){
+    return async function(dispatch){
+        try{
+            var json = await axios.get('http://localhost:3001/dogs' + id);
+            return dispatch({
+                type: GET_DETAIL,
+                payload: json.data
+            })
+        } catch(err){
+            console.log(err)
+        }
     }
 }

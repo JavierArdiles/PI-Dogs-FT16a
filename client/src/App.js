@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import DogCreate from './components/DogCreate';
+import Detail from './components/Detail';
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
                      mandar a la ruta que más se le asemeje. En este caso, /home. No es obligatorio usarlo y puede
                      funcionar bien sin usarlo pero es buena práctica usarlo. */}
           <Route exact path='/' component={LandingPage} />
-          <Route path='/home' component={Home} />
+          <Route exact path='/home' component={Home} />
           <Route path='/dogs' component={DogCreate} />
-          
+          <Route path='/home/:id' component={Detail} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -1,14 +1,15 @@
 import React from "react";
+import '../styles/Card.css'
 
 export default function Card({ image, name, temperaments, weightMin, weightMax }) {
     return (
-        <div>
+        <div className='card' >
             <h3>{name}</h3>
-            <h5>{function(temperaments){
-                if(typeof(temperaments) === 'string'){
+            <h5>{function (temperaments) {
+                if (typeof (temperaments) === 'string') {
                     return temperaments;
                 }
-                if(Array.isArray(temperaments)){
+                if (Array.isArray(temperaments)) {
                     let temps = temperaments.map(el => el.name);
                     return temps.join(', ');
                 }

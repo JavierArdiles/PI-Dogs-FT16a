@@ -1,0 +1,80 @@
+.home{
+    position: absolute;
+    background-image: url('./Curiosity\ blue.jpg');
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #dbd5b5;
+    height: 70px;
+  }
+  
+  .navbar button, select, input {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 14px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar div:hover {
+    background-color: #f3f8f2;
+    color: black;
+  }
+  
+  .navbar a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  
+  .navbar input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+
+.container {
+    display: flex;
+    -webkit-box-pack: center;
+    place-content: center;
+    align-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.cardHome{
+    margin: 0 5px 0 5px;
+}
+
+.create {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }

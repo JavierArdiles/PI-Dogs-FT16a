@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import '../styles/Home.css'
+import { GiDogHouse, GiSittingDog } from 'react-icons/gi';
 
 export default function Home() {
     const dispatch = useDispatch(); // para usar esa constante para ir despachando mis acciones.
@@ -52,14 +54,14 @@ export default function Home() {
         dispatch(filterDogsByOrigin(e.target.value))
     }
 
-    function handleSortByName(e){
+    function handleSortByName(e) {
         e.preventDefault();
         dispatch(sortByName(e.target.value));
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`);
     }
 
-    function handleSortByWeight(e){
+    function handleSortByWeight(e) {
         e.preventDefault();
         dispatch(sortByWeight(e.target.value));
         setCurrentPage(1);
@@ -67,74 +69,92 @@ export default function Home() {
     }
 
     return (
-        <div>
-            <h1>PI DOGS</h1>
-            <Link to='/' ><button>Start</button></Link>
-            <Link to='/dogs' ><button>CREATE PUPPER</button></Link>
-            <hr/>
-            <button onClick={e => { handleClick(e) }} >
-                Reload all doggies
-            </button>
-            <div>
-                <select onChange={e => handleSortByName(e)} >
-                    <option value='' disabled selected hidden >Sort by breed name</option>
-                    <option value='asc' >A - Z</option>
-                    <option value='desc' >Z - A</option>
-                    {/* El value me permite después cuando haga la lógica decir, si el option tiene value alf, hacé
-                        tal cosa; si tiene value inv, hacé tal otra*/}
-                </select>
-                <select onChange={e => handleSortByWeight(e)} >
-                    <option value='' disabled selected hidden>Sort by weight</option>
-                    <option value='asc'>Lighter to heavier</option>
-                    <option value='desc'>Heavier to lighter</option>
-                </select>
-                <select onChange={e => handleFilterTemperaments(e)}>
-                    <option key={0} value='all'>All temperaments</option>
-                    {allTemperaments?.sort(function(a,b){
-                        if(a.name < b.name) return -1;
-                        if(a.name > b.name) return 1;
-                        return 0;
-                    }).map(el => {
-                        return (
-                            <option key={el.id} value={el.name}>{el.name}</option>
-                        )
-                    })}
-                </select>
-                <select onChange={e => handleFilterOrigin(e)}>
-                    <option value='all'>All breeds</option>
-                    <option value='api'>Existent breeds</option>
-                    <option value='created'>Created breeds</option>
-                </select>
-                <hr/>
-                <SearchBar/>
+        <div className='home'>
 
-                <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
-                <hr/>
+            <div className='navbar'>
+
+            
+                    <button onClick={e => { handleClick(e) }} >
+                        Home <GiDogHouse />
+                    </button>
                 
-                <div>
-                    {
-                        currentDogs?.map((el) => {
-                            return (
-                                <div key={el.id}>
-                                    <Link to={'/home/' + el.id} >
-                                        <Card
-                                            name={el.name}
-                                            image={el.image}
-                                            temperaments={el.temperaments}
-                                            weightMin={el.weightMin}
-                                            weightMax={el.weightMax}
-                                            key={el.id}
-                                        />
-                                    </Link>
-                                    <hr />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
 
-                <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
+            
+                    <Link to='/dogs' ><button>Create pupper <GiSittingDog /></button></Link>
+                
+
+            
+                    <select onChange={e => handleSortByName(e)} >
+                        <option value='' disabled selected hidden >Sort breeds by name</option>
+                        <option value='asc' >A - Z</option>
+                        <option value='desc' >Z - A</option>
+                    </select>
+                
+
+            
+                    <select onChange={e => handleSortByWeight(e)} >
+                        <option value='' disabled selected hidden>Sort by weight</option>
+                        <option value='asc'>Lighter to heavier</option>
+                        <option value='desc'>Heavier to lighter</option>
+                    </select>
+                
+
+            
+                    <select onChange={e => handleFilterTemperaments(e)}>
+                        <option key={0} value='all'>All temperaments</option>
+                        {allTemperaments?.sort(function (a, b) {
+                            if (a.name < b.name) return -1;
+                            if (a.name > b.name) return 1;
+                            return 0;
+                        }).map(el => {
+                            return (
+                                <option key={el.id} value={el.name}>{el.name}</option>
+                            )
+                        })}
+                    </select>
+                
+
+            
+                    <select onChange={e => handleFilterOrigin(e)}>
+                        <option value='all'>All breeds</option>
+                        <option value='api'>Existent breeds</option>
+                        <option value='created'>Created breeds</option>
+                    </select>
+                
+
+            
+                    <SearchBar />
+                
+
             </div>
+            <h1>Dog Finder / Creator</h1>
+
+            <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
+
+
+            <div className='container'>
+                {
+                    currentDogs?.map((el) => {
+                        return (
+                            <div key={el.id} className='cardHome'>
+                                <Link to={'/home/' + el.id} >
+                                    <Card
+                                        name={el.name}
+                                        image={el.image}
+                                        temperaments={el.temperaments}
+                                        weightMin={el.weightMin}
+                                        weightMax={el.weightMax}
+                                        key={el.id}
+                                    />
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+            <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
+            <Link to='/' ><button>Welcome Page</button></Link>
         </div>
     )
 

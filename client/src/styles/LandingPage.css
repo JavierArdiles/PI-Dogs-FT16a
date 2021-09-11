@@ -1,4 +1,41 @@
-.lp{
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fconperritos.com%2Fwp-content%2Fuploads%2F2018%2F08%2Fimg_cat_cuadros.jpg&f=1&nofb=1');
-    height: 1150px
-}
+
+.button {
+    border-radius: 4px;
+    background-color: #ebe9e9;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 350px;
+    transition: all 0.5s;
+    cursor: pointer;
+    top:40%;
+    left: 38%;
+    position:absolute;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

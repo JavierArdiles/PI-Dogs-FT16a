@@ -7,8 +7,8 @@ import { Provider } from 'react-redux'; // hay que envolver todo el index (<Reac
 import { store } from './store';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <Provider store={store} >
+    <React.StrictMode >
       <App />
     </React.StrictMode>
   </Provider>,

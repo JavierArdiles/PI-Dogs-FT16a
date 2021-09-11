@@ -28,7 +28,7 @@ export default function Detail(props) {
                             {myDog[0].createdInDb ?
                                 (myDog[0].temperaments !== [] ?
                                     myDog[0].temperaments.map(el => {
-                                        return <li><h4>{el.name}</h4></li>
+                                        return <li>{el.name}</li>
                                     }) :
                                     'No temperaments provided for this breed') :
                                 myDog[0].temperaments ?

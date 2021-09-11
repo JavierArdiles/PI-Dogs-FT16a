@@ -5,9 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblog.coghillcartooning.com%2Fwp-content%2Fuploads%2F2011%2F12%2Fcartoon-doghouse-backyard-my-first-doggie.jpg&f=1&nofb=1');
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+

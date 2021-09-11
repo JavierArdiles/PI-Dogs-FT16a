@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/LandingPage.css'
+import '../styles/LandingPage.css';
+import {GiDogHouse} from 'react-icons/gi'
 
 export default function LandingPage(){
     return(
-        <div className='lp'>
-            <h1>Welcome to my DOG PI</h1>
+        <div>
             <Link to='/home'>
-                <button>Enter</button>
+                <button className='button'><h1><span>Home <GiDogHouse/></span></h1></button>
             </Link>
         </div>
     )

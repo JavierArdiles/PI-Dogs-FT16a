@@ -2,6 +2,7 @@ import React from "react";
 import { useState} from "react";
 import { useDispatch } from "react-redux";
 import { getNameDogs } from "../actions";
+import { GiThrowingBall } from 'react-icons/gi';
 
 export default function SearchBar(){
 
@@ -24,11 +25,11 @@ export default function SearchBar(){
         <div>
             <input
                 type='text'
-                placeholder='Search by breed...'
+                placeholder='Search by breed...' 
                 onChange={e => handleInputChange(e)}
                 value={name}
             />
-            <button type='submit' onClick={e => handleSubmit(e)}>Fetch! 🥏</button>
+            <button type='submit' onClick={e => handleSubmit(e)}>Fetch! <GiThrowingBall/></button>
         </div>
     )
 }

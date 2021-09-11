@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 function validate(input) {
     let errors = {};
     if (!input.name) {
-        errors.name = 'Your dog must have a name.';
+        errors.name = 'Your breed must have a name.';
     }
     else if (input.name.length > 30) {
         errors.name = 'That´s way too long a name. Keep it simple!!';
@@ -18,7 +18,7 @@ function validate(input) {
         errors.heightMin = 'Height should be a number.';
     }
     else if (input.heightMin <= 0) {
-        errors.heightMin = 'Your dog can´t be shorter than 0.';
+        errors.heightMin = 'Your breed can´t be shorter than 0.';
     }
     else if (parseInt(input.heightMin) >= parseInt(input.heightMax)) {
         errors.heightMin = 'Minimum height should be lower than maximum height.';
@@ -39,7 +39,7 @@ function validate(input) {
         errors.weightMin = 'Weight should be a number.';
     }
     else if (input.weightMin <= 0) {
-        errors.weightMin = 'Your dog must weight at least more than nothingness.';
+        errors.weightMin = 'Your breed must weight at least more than nothingness.';
     }
     else if (!input.weightMax) {
         errors.weightMax = 'Maximum weight is required!!';
@@ -51,7 +51,7 @@ function validate(input) {
         errors.weightMax = 'Maximum weight should be higher than minimum weight.';
     }
     else if (input.weightMax > 200) {
-        errors.weightMax = 'We are creating a dog, not an elephant 🐘 Keep your weight under 200.';
+        errors.weightMax = 'We are creating a dog, not an elephant 🐘!! Keep your weight under 200.';
     }
     else if (!input.life_span) {
         errors.life_span = 'Life span is required!!';
@@ -152,7 +152,7 @@ export default function DogCreate() {
     return (
         <div>
             <Link to='/home'><button>Home</button></Link>
-            <h1>🐕 Create your own dog race 🐶</h1>
+            <h1>🐕 Create your own dog breed 🐶</h1>
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
                     <label>Name: </label>
@@ -236,9 +236,3 @@ export default function DogCreate() {
         </div>
     )
 }
-// Nombre
-// Altura (Diferenciar entre altura mínima y máxima)
-// Peso (Diferenciar entre peso mínimo y máximo)
-// Años de vida
-// [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
-// [ ] Botón/Opción para crear una nueva raza de perro

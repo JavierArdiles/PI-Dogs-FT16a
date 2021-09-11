@@ -33,7 +33,7 @@ const getApiInfo = async () => {
                 el.weight.metric.split(' - ')[1] :
                 '39',//Math.round(parseInt(el.weight.imperial.split(' - ')[1]) / 2.205).toString(),
             life_span: el.life_span,
-            temperaments: el.temperament,
+            temperaments: el.temperament? el.temperament : null,
             image: el.image.url,
         }
     });

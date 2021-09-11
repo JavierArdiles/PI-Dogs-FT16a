@@ -38,14 +38,17 @@ export default function Home() {
 
     function handleClick(e) {
         e.preventDefault();
+        setCurrentPage(1);
         dispatch(getDogs())
     }
 
     function handleFilterTemperaments(e) {
+        setCurrentPage(1);
         dispatch(filterDogsByTemperament(e.target.value))
     }
 
     function handleFilterOrigin(e) {
+        setCurrentPage(1);
         dispatch(filterDogsByOrigin(e.target.value))
     }
 
@@ -74,7 +77,7 @@ export default function Home() {
             </button>
             <div>
                 <select onChange={e => handleSortByName(e)} >
-                    <option value='' disabled selected hidden >Sort by race name</option>
+                    <option value='' disabled selected hidden >Sort by breed name</option>
                     <option value='asc' >A - Z</option>
                     <option value='desc' >Z - A</option>
                     {/* El value me permite después cuando haga la lógica decir, si el option tiene value alf, hacé
@@ -98,9 +101,9 @@ export default function Home() {
                     })}
                 </select>
                 <select onChange={e => handleFilterOrigin(e)}>
-                    <option value='all'>All races</option>
-                    <option value='api'>Existent races</option>
-                    <option value='created'>Created races</option>
+                    <option value='all'>All breeds</option>
+                    <option value='api'>Existent breeds</option>
+                    <option value='created'>Created breeds</option>
                 </select>
                 <hr/>
                 <SearchBar/>

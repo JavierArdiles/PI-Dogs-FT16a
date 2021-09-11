@@ -24,11 +24,11 @@ export default function SearchBar(){
         <div>
             <input
                 type='text'
-                placeholder='Search by race...'
+                placeholder='Search by breed...'
                 onChange={e => handleInputChange(e)}
                 value={name}
             />
-            <button type='submit' onClick={e => handleSubmit(e)}>Fetch!</button>
+            <button type='submit' onClick={e => handleSubmit(e)}>Fetch! 🥏</button>
         </div>
     )
 }

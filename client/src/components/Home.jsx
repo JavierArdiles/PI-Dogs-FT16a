@@ -71,62 +71,58 @@ export default function Home() {
     return (
         <div className='home'>
 
-            <div className='navbar'>
-
-            
-                    <button onClick={e => { handleClick(e) }} >
-                        Home <GiDogHouse />
-                    </button>
-                
-
-            
-                    <Link to='/dogs' ><button>Create pupper <GiSittingDog /></button></Link>
-                
-
-            
-                    <select onChange={e => handleSortByName(e)} >
-                        <option value='' disabled selected hidden >Sort breeds by name</option>
-                        <option value='asc' >A - Z</option>
-                        <option value='desc' >Z - A</option>
-                    </select>
-                
-
-            
-                    <select onChange={e => handleSortByWeight(e)} >
-                        <option value='' disabled selected hidden>Sort by weight</option>
-                        <option value='asc'>Lighter to heavier</option>
-                        <option value='desc'>Heavier to lighter</option>
-                    </select>
-                
-
-            
-                    <select onChange={e => handleFilterTemperaments(e)}>
-                        <option key={0} value='all'>All temperaments</option>
-                        {allTemperaments?.sort(function (a, b) {
-                            if (a.name < b.name) return -1;
-                            if (a.name > b.name) return 1;
-                            return 0;
-                        }).map(el => {
-                            return (
-                                <option key={el.id} value={el.name}>{el.name}</option>
-                            )
-                        })}
-                    </select>
-                
-
-            
-                    <select onChange={e => handleFilterOrigin(e)}>
-                        <option value='all'>All breeds</option>
-                        <option value='api'>Existent breeds</option>
-                        <option value='created'>Created breeds</option>
-                    </select>
-                
-
-            
-                    <SearchBar />
-                
-
+            <div className='divNB'>
+                <ul className='navbar'>
+                    <li >
+                        <button onClick={e => { handleClick(e) }} className='elementNB' >
+                            Home <GiDogHouse />
+                        </button>
+                    </li>
+                    <li>
+                        <Link to='/dogs' ><button className='elementNB' >Create pupper <GiSittingDog /></button></Link>
+                    </li>
+                    <li className='content-select'>
+                        <select onChange={e => handleSortByName(e)}  >
+                            <option value='' disabled selected hidden className='elementNB' >Sort breeds by name</option>
+                            <option value='asc'  >A - Z</option>
+                            <option value='desc'  >Z - A</option>
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleSortByWeight(e)}  >
+                            <option value='' disabled selected hidden>Sort by weight</option>
+                            <option value='asc'>Lighter to heavier</option>
+                            <option value='desc'>Heavier to lighter</option>
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleFilterTemperaments(e)}  >
+                            <option key={0} value='all'>All temperaments</option>
+                            {allTemperaments?.sort(function (a, b) {
+                                if (a.name < b.name) return -1;
+                                if (a.name > b.name) return 1;
+                                return 0;
+                            }).map(el => {
+                                return (
+                                    <option key={el.id} value={el.name}>{el.name}</option>
+                                )
+                            })}
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleFilterOrigin(e)}  >
+                            <option value='all'>All breeds</option>
+                            <option value='api'>Existent breeds</option>
+                            <option value='created'>Created breeds</option>
+                        </select>
+                    </li>
+                    <li>
+                        <SearchBar />
+                    </li>
+                </ul>
             </div>
+
+            
             <h1>Dog Finder / Creator</h1>
 
             <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
@@ -134,7 +130,8 @@ export default function Home() {
 
             <div className='container'>
                 {
-                    currentDogs?.map((el) => {
+                    currentDogs?
+                        currentDogs.map((el) => {
                         return (
                             <div key={el.id} className='cardHome'>
                                 <Link to={'/home/' + el.id} >
@@ -149,12 +146,13 @@ export default function Home() {
                                 </Link>
                             </div>
                         )
-                    })
+                    }):
+                    <div className='loading'></div>
                 }
             </div>
 
             <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
-            <Link to='/' ><button>Welcome Page</button></Link>
+            <Link to='/' ><button className='welcome'><span>Welcome Page</span></button></Link>
         </div>
     )
 

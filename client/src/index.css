@@ -5,7 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblog.coghillcartooning.com%2Fwp-content%2Fuploads%2F2011%2F12%2Fcartoon-doghouse-backyard-my-first-doggie.jpg&f=1&nofb=1');
+  background-image: url('./styles/perro-corriendo.gif');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 code {

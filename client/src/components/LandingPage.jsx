@@ -5,7 +5,7 @@ import {GiDogHouse} from 'react-icons/gi'
 
 export default function LandingPage(){
     return(
-        <div>
+        <div className='divLP'>
             <Link to='/home'>
                 <button className='button'><h1><span>Home <GiDogHouse/></span></h1></button>
             </Link>

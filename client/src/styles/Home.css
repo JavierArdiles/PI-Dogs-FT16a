@@ -1,56 +1,73 @@
 .home{
     position: absolute;
-    background-image: url('./Curiosity\ blue.jpg');
+    width: 100%;
+    background: #e3dbcb;
+}
+
+.divNB{
+  top: 0;
+  width: 100%;
 }
 
 .navbar {
     overflow: hidden;
-    background-color: #dbd5b5;
-    height: 70px;
+    background-color: #ddbea9;
+    width: 100%;
+    height: 100%;
+    top: 0;
   }
   
-  .navbar button, select, input {
+  .navbar li {
     float: left;
     display: block;
     color: black;
     text-align: center;
-    padding: 10px 14px;
+    padding: 10px 0px;
     text-decoration: none;
-    font-size: 17px;
   }
-  
-  .navbar div:hover {
-    background-color: #f3f8f2;
-    color: black;
-  }
-  
-  .navbar a.active {
-    background-color: #2196F3;
-    color: white;
-  }
-  
   
   .navbar input[type=text] {
     padding: 6px;
-    margin-top: 8px;
+    margin-top: 16px;
     font-size: 17px;
     border: none;
+    background-color: #ffe8d6;
+    color:rgb(94, 94, 94)
   }
+
   
-  .topnav .search-container button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
+  .elementNB{
+    height: 43px;
+    border: transparent;
+    background-color: transparent;
+    font-size: medium;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  .elementNB:hover{
+    background-color: #cb997e;
+    color: black;
+  }
+
+  .content-select select{
     cursor: pointer;
+      padding: 7px 0px;
+      height: 42px;
+    font-size: 1em;
+    color: rgb(94, 94, 94);
+    border:2px solid rgba(0,0,0,0.2);
+      border-radius: 8px;
+      transition: all 0.25s ease;
   }
-  
-  .topnav .search-container button:hover {
-    background: #ccc;
+  .content-select select:hover{
+    background: #ffe8d6;
+    color: rgb(71, 71, 71);
+    border-color: rgb(71, 71, 71);
   }
+
+.loading{
+  background-image: url('../styles/perro-corriendo.gif');
+}
 
 .container {
     display: flex;
@@ -68,13 +85,44 @@
     margin: 0 5px 0 5px;
 }
 
-.create {
-    display: block;
-    width: 100%;
+  .welcome {
+    border-radius: 4px;
+    background-color: #ddbea9;
     border: none;
-    background-color: #04AA6D;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
+    color: black;
     text-align: center;
+    font-size: x-large;
+    padding: 20px;
+    width: 350px;
+    transition: all 0.5s;
+    cursor: pointer;
+    left: 37%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .welcome span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .welcome span:after {
+    content: '\00ab';
+    opacity: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .welcome:hover span {
+    padding-left: 25px;
+  }
+  .welcome:hover{
+    background-color: #ffe8d6;
+  }
+  
+  .welcome:hover span:after {
+    opacity: 1;
+    right: 0;
   }

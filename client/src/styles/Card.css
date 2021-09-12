@@ -16,10 +16,19 @@
     align-items: center;
     border-radius: 2em;
     width: 18em;
-    height: 28em;
-    background-color: #dbd5b5;
+    height: 33em;
+    background-color: #ddbea9;
   }
   
   .card:hover {
     box-shadow: 0 12px 24px 0 rgba(0,0,0,0.2);
   }
+
+.info{
+  color: #6b705c;
+  text-decoration: none;
+}
+
+.image{
+  border-radius: 8px;
+}

@@ -4,8 +4,8 @@ import '../styles/Card.css'
 export default function Card({ image, name, temperaments, weightMin, weightMax }) {
     return (
         <div className='card' >
-            <h3>{name}</h3>
-            <h5>{function (temperaments) {
+            <h1 className='info' >{name}</h1>
+            <h3 className='info'>{function (temperaments) {
                 if (typeof (temperaments) === 'string') {
                     return temperaments;
                 }
@@ -13,9 +13,9 @@ export default function Card({ image, name, temperaments, weightMin, weightMax }
                     let temps = temperaments.map(el => el.name);
                     return temps.join(', ');
                 }
-            }(temperaments)}</h5>
-            <img src={image} alt={`${name}`} width='250px' heigth='200px' />
-            <p>Weight: {weightMin} - {weightMax} kg</p>
+            }(temperaments)}</h3>
+            <img src={image} alt={`${name}`} width='250px' heigth='200px' className='image'/>
+            <h3 className='info'>Weight: {weightMin} - {weightMax} kg</h3>
         </div>
     )
 }

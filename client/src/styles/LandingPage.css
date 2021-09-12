@@ -1,6 +1,9 @@
+.divLP{
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblog.coghillcartooning.com%2Fwp-content%2Fuploads%2F2011%2F12%2Fcartoon-doghouse-backyard-my-first-doggie.jpg&f=1&nofb=1');
+}
 
 .button {
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #ebe9e9;
     border: none;
     color: black;
@@ -10,7 +13,7 @@
     width: 350px;
     transition: all 0.5s;
     cursor: pointer;
-    top:40%;
+    top:10%;
     left: 38%;
     position:absolute;
   }

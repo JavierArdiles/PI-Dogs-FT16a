@@ -237,7 +237,7 @@ export default function DogCreate() {
                     })}
 
                 </div>
-                <button type='submit' className='boop'><strong>Boop  <IoPaw/></strong></button>
+                <button type='submit' className='boop' ><strong>Boop  <IoPaw/></strong></button>
 
             </form>
 

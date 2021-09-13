@@ -49,7 +49,8 @@ input:hover{
 }
 .temp{
     font-size: medium;
-    color: #e26647
+    color: #e26647;
+    margin: 10px;
 }
 .x{
     background-color: #ddbea9;

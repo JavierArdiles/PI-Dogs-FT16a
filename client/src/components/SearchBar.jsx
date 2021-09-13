@@ -16,9 +16,13 @@ export default function SearchBar(){
         console.log(name);
     }
 
+    
+
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(getNameDogs(name));
+        var found = getNameDogs(name);
+        dispatch(found)
+        //dispatch(getNameDogs(name));
         setName('');
     }
 
@@ -30,6 +34,7 @@ export default function SearchBar(){
                 onChange={e => handleInputChange(e)}
                 value={name}
                 className='input'
+                onKeyPress={e => e.key === 'Enter' && handleSubmit(e)}
             />
             <button
                 type='submit'

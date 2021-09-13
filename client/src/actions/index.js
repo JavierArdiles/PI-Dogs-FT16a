@@ -59,6 +59,7 @@ export function sortByWeight(payload){
 
 export function getNameDogs(name){
     return async function(dispatch){
+
         try {
             var json = await axios.get('http://localhost:3001/dogs?name=' + name);
             return dispatch({
@@ -66,7 +67,7 @@ export function getNameDogs(name){
                 payload: json.data,
             })
         } catch(err){
-            console.log(err);
+            console.log(err)
         }
     }
 }

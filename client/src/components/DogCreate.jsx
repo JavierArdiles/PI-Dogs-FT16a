@@ -51,7 +51,7 @@ function validate(input) {
     else if (isNaN(parseInt(input.weightMax))) {
         errors.weightMax = 'Weight should be a number.';
     }
-    else if (input.weightMax <= input.weightMin) {
+    else if (parseInt(input.weightMax) <= parseInt(input.weightMin)) {
         errors.weightMax = 'Maximum weight should be higher than minimum weight.';
     }
     else if (input.weightMax > 200) {

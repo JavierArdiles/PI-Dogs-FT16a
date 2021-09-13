@@ -79,7 +79,9 @@ export default function Home() {
                         </button>
                     </li>
                     <li>
-                        <Link to='/dogs' ><button className='elementNB' >Create pupper <GiSittingDog /></button></Link>
+                        <Link to='/dogs' ><button className='elementNB' >
+                            Create pupper <GiSittingDog />
+                        </button></Link>
                     </li>
                     <li className='content-select'>
                         <select onChange={e => handleSortByName(e)}  >
@@ -134,7 +136,7 @@ export default function Home() {
                         currentDogs.map((el) => {
                         return (
                             <div key={el.id} className='cardHome'>
-                                <Link to={'/home/' + el.id} >
+                                <Link to={'/home/' + el.id} style={{ textDecoration: 'none' }} >
                                     <Card
                                         name={el.name}
                                         image={el.image}

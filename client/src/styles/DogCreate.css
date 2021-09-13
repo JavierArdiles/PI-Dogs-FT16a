@@ -1,5 +1,8 @@
 .divCreate{
     background-color: #e3dbcb;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 .buttonHome{
@@ -7,7 +10,7 @@
     float: left;
     font-size: medium;
     margin-left: 40px;
-    margin-top: 15px;
+    margin-top: 36px;
     height: 43px;
     border: transparent;
     border-radius: 8px;
@@ -59,7 +62,7 @@ select{
       padding: 7px 10px;
       height: 42px;
     font-size: 1em;
-    color: #ddbea9;
+    color: #cb997e;
     border:2px solid rgba(0,0,0,0.2);
       border-radius: 8px;
       transition: all 0.25s ease;
@@ -81,4 +84,10 @@ select:hover{
     padding-right: 30px;
     margin: 10px;
     color: #4c5042;
+}
+
+.error{
+    color: red;
+    font-size: small;
+    margin-top: 0;
 }

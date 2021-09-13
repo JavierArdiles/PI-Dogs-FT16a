@@ -127,7 +127,7 @@ export default function DogCreate() {
     function handleSubmit(e) {
         e.preventDefault();
         console.log(errors);
-        if (!Object.getOwnPropertyNames(errors).length) {
+        if (!Object.getOwnPropertyNames(errors).length && input.name && input.heightMin && input.heightMax && input.weightMin && input.weightMax && input.life_span && input.temperaments.length) {
             dispatch(postDog(input));
             alert('Doggie created 👏');
             setInput({
@@ -162,7 +162,7 @@ export default function DogCreate() {
                     <label><strong>Name: </strong></label>
                     <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
                     {errors.name && (
-                        <p className='error'>{errors.name}</p>
+                        <p className='error'><strong>{errors.name}</strong></p>
                     )}
                 </div>
                 <div>
@@ -170,7 +170,7 @@ export default function DogCreate() {
                     <input type='text' value={input.heightMin} name='heightMin' onChange={e => handleChange(e)} />
                     <label><strong> cm</strong></label>
                     {errors.heightMin && (
-                        <p className='error'>{errors.heightMin}</p>
+                        <p className='error'><strong>{errors.heightMin}</strong></p>
                     )}
                 </div>
                 <div>
@@ -178,7 +178,7 @@ export default function DogCreate() {
                     <input type='text' value={input.heightMax} name='heightMax' onChange={e => handleChange(e)} />
                     <label><strong> cm</strong></label>
                     {errors.heightMax && (
-                        <p className='error'>{errors.heightMax}</p>
+                        <p className='error'><strong>{errors.heightMax}</strong></p>
                     )}
                 </div>
                 <div>
@@ -186,7 +186,7 @@ export default function DogCreate() {
                     <input type='text' value={input.weightMin} name='weightMin' onChange={e => handleChange(e)} />
                     <label><strong> kg</strong></label>
                     {errors.weightMin && (
-                        <p className='error'>{errors.weightMin}</p>
+                        <p className='error'><strong>{errors.weightMin}</strong></p>
                     )}
                 </div>
                 <div>
@@ -194,7 +194,7 @@ export default function DogCreate() {
                     <input type='text' value={input.weightMax} name='weightMax' onChange={e => handleChange(e)} />
                     <label><strong> kg</strong></label>
                     {errors.weightMax && (
-                        <p className='error'>{errors.weightMax}</p>
+                        <p className='error'><strong>{errors.weightMax}</strong></p>
                     )}
                 </div>
                 <div>
@@ -202,7 +202,7 @@ export default function DogCreate() {
                     <input type='text' value={input.life_span} name='life_span' onChange={e => handleChange(e)} />
                     <label><strong> years</strong></label>
                     {errors.life_span && (
-                        <p className='error'>{errors.life_span}</p>
+                        <p className='error'><strong>{errors.life_span}</strong></p>
                     )}
                 </div>
                 <div>
@@ -223,7 +223,6 @@ export default function DogCreate() {
                         })}
                     </select>
 
-                    {/*<ul><li>{input.temperaments.map(el => el + ', ')}</li></ul>*/}
                     {input.temperaments.map(el => {
                         return (
                             
@@ -241,6 +240,7 @@ export default function DogCreate() {
                 <button type='submit' className='boop'><strong>Boop  <IoPaw/></strong></button>
 
             </form>
+
         </div>
     )
 }

@@ -14,7 +14,7 @@ export default function Card({ image, name, temperaments, weightMin, weightMax }
                     return temps.join(', ');
                 }
             }(temperaments)}</h3>
-            <img src={image} alt={`${name}`} width='250px' heigth='200px' className='image'/>
+            <img src={image} alt={`${name}`} width='250px' heigth='200px' className='imageDog'/>
             <h3 className='info'>Weight: {weightMin} - {weightMax} kg</h3>
         </div>
     )

@@ -28,7 +28,10 @@
   color: #6b705c;
   text-decoration: none;
 }
+h1{
+  text-decoration: none;
+}
 
-.image{
+.imageDog{
   border-radius: 8px;
 }

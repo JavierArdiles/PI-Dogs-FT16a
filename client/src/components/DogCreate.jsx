@@ -94,7 +94,7 @@ export default function DogCreate() {
 
     useEffect(() => {
         dispatch(getTemperaments());
-    });
+    },[dispatch]);
 
     function handleChange(e) {
         setInput({

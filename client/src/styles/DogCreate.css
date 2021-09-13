@@ -22,6 +22,7 @@
 .title{
     color: #4c5042;
     justify-content: center;
+    padding-right: 105px;
 }
 
 label{
@@ -85,6 +86,9 @@ select:hover{
     padding-right: 30px;
     margin: 10px;
     color: #4c5042;
+}
+.boop:hover{
+    background-color: #cb997e;
 }
 
 .error{

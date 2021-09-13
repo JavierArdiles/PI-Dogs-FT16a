@@ -17,9 +17,11 @@ export default function Detail(props) {
 
     const myDog = useSelector((state) => state.detail);
 
+    
+
     return (
         <div className='divDetail'>
-            <Link to='/home'><button className='buttonHome1' id='home'>Home <GiDogHouse /></button></Link>
+            <Link to='/home'><button className='buttonHome1' id='home' >Home <GiDogHouse /></button></Link>
             <Link to='/dogs' >
                 <button className='buttonHome1' >
                     Create pupper <GiSittingDog />

@@ -7,6 +7,7 @@ export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const SORT_BY_WEIGHT = 'SORT_BY_WEIGHT';
 export const GET_DETAIL = 'GET_DETAIL';
+export const SEARCH_FAIL = 'SEARCH_FAIL';
 
 
 export function getDogs(name) {
@@ -15,6 +16,7 @@ export function getDogs(name) {
             if (name) {
                 return axios.get('http://localhost:3001/dogs?name=' + name)
                     .then(res => dispatch({ type: GET_DOGS, payload: res.data }))
+                    .catch(err => dispatch({type: GET_DOGS, payload: err.data}))
             }
             let json = await axios.get('http://localhost:3001/dogs', {}); // axios por default hace axios.get entonces no hace falta ponerlo.
             return dispatch({
@@ -22,9 +24,11 @@ export function getDogs(name) {
                 payload: json.data,
             })
         } catch(err){
+            var fail = axios.get('http://localhost:3001/dogs?name=' + name)
+                .then(res => res.data)
             return dispatch({
-                type: GET_DOGS,
-                payload: 'NOT_FOUND',
+                type: SEARCH_FAIL,
+                payload: fail,
             });
         }
     }

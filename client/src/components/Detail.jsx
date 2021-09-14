@@ -44,12 +44,12 @@ export default function Detail(props) {
                                         {myDog[0].createdInDb ?
                                             (myDog[0].temperaments !== [] ?
                                                 myDog[0].temperaments.map(el => {
-                                                    return <li><label>{el.name}</label></li>
+                                                    return <li key={el}><label>{el.name}</label></li>
                                                 }) :
                                                 'No temperaments provided for this breed') :
                                             myDog[0].temperaments ?
                                                 myDog[0].temperaments.split(', ').map(el => {
-                                                    return <li><label>{el}</label></li>
+                                                    return <li key={el}><label>{el}</label></li>
                                                 }) :
                                                 '🤷‍♂️ No temperaments provided for this breed 🤷‍♀️'}
                                     </ul>

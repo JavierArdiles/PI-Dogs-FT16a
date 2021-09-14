@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router } = require('express'); // El Router de express me permite usar POST, PUT, GET, DELETE
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
@@ -64,7 +64,7 @@ router.get('/dogs', async (req, res) => {
     let allDogs = await getAllDogs();
     if (name) {
         let dogName = await allDogs.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
-        dogName.length ? res.status(200).send(dogName) : res.status(404).send('😬 Sorry, looks like we don´t have that dog breed 🤷‍♂️');
+        dogName.length ? res.status(200).send(dogName) : res.send([{name: 'Sorry, looks like we don´t have that dog breed', id:'', temperaments: 'Try using our pupper creator', image: 'https://i.pinimg.com/originals/44/80/5b/44805bfcaaa975c12c514d99c34c593a.gif'}]);
     } else {
         res.status(200).send(allDogs)
     }

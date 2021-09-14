@@ -7,7 +7,7 @@ import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import '../styles/Home.css'
-import { GiDogHouse, GiSittingDog } from 'react-icons/gi';
+import { GiDogHouse, GiSittingDog, GiDogBowl } from 'react-icons/gi';
 
 
 export default function Home() {
@@ -29,8 +29,10 @@ export default function Home() {
         setCurrentPage(pageNumber);
     }
 
+   
+
     // Ahora voy a traerme del estado los perros cuando el componente se monta:
-    useEffect(() => {
+    useEffect(() => { // useEffect simula los lifecycles de los estados locales.
         dispatch(getDogs()) // Este dispatch es lo mismo que hacer el mapDispatchToProps
     }, [dispatch]) // El segundo parámetro del useEffect es un array donde va todo de lo que depende el useEffect para ejecutarse.
     
@@ -85,14 +87,14 @@ export default function Home() {
                     </li>
                     <li className='content-select'>
                         <select onChange={e => handleSortByName(e)}  >
-                            <option value='' disabled selected hidden className='elementNB' >Sort breeds by name</option>
+                            <option value='selected' hidden className='elementNB' >Sort breeds by name</option>
                             <option value='asc'  >A - Z</option>
                             <option value='desc'  >Z - A</option>
                         </select>
                     </li>
                     <li className='content-select' >
                         <select onChange={e => handleSortByWeight(e)}  >
-                            <option value='' disabled selected hidden>Sort by weight</option>
+                            <option value='selected' hidden>Sort by weight</option>
                             <option value='asc'>Lighter to heavier</option>
                             <option value='desc'>Heavier to lighter</option>
                         </select>
@@ -125,7 +127,7 @@ export default function Home() {
             </div>
 
             
-            <h1>Dog Finder / Creator</h1>
+            <h1><GiDogBowl/>  Dog Finder / Creator  <GiDogBowl/></h1>
 
             <Paginado dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado} />
 

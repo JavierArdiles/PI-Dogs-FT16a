@@ -211,7 +211,7 @@ export default function DogCreate() {
                 </div>
                 <div>
                     <select onChange={e => handleSelect(e)} >
-                        <option value='' disabled selected hidden >Temperaments</option>
+                        <option value='selected' hidden >Temperaments</option>
                         {allTemperaments?.sort(function (a, b) {
                             if (a.name < b.name) return -1;
                             if (a.name > b.name) return 1;

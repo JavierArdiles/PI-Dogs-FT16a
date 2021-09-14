@@ -5,7 +5,7 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_WEIGHT,
-    GET_DETAIL
+    GET_DETAIL,
 } from "../actions";
 
 const initialState = {

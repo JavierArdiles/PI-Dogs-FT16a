@@ -5,19 +5,18 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_WEIGHT,
-    GET_NAME_DOGS,
     GET_DETAIL
 } from "../actions";
 
 const initialState = {
-    dogs : [],
+    dogs: [],
     allDogs: [],// Esto lo voy a usar para los filtros. Para tener a todos los perros guardados siempre y no que me vayan cambiando los perros que tengo con cada filtro que haga.
     temperaments: [],
     detail: []
 }
 
-function rootReducer(state = initialState, action){
-    switch(action.type){
+function rootReducer(state = initialState, action) {
+    switch (action.type) {
         case GET_DOGS:
             return {
                 ...state,
@@ -32,8 +31,8 @@ function rootReducer(state = initialState, action){
         case FILTER_BY_TEMPERAMENT:
             const allDogs = state.allDogs; // Al usar state.allDogs en lugar de state.dogs, cada vez que aplique un filtro, state.dogs va a cambiar, pero voy a seguir teniendo guardados todos los perros en mi state.allDogs, entonces voy a poder cambiar de filtro sin tener que volver a cargar la página.
             const temperamentFiltered = action.payload === 'all' ? allDogs : allDogs.filter(el => {
-                if(typeof(el.temperaments) === 'string') return el.temperaments.includes(action.payload);
-                if(Array.isArray(el.temperaments)){
+                if (typeof (el.temperaments) === 'string') return el.temperaments.includes(action.payload);
+                if (Array.isArray(el.temperaments)) {
                     let temps = el.temperaments.map(el => el.name);
                     return temps.includes(action.payload);
                 }
@@ -52,20 +51,20 @@ function rootReducer(state = initialState, action){
             }
         case SORT_BY_NAME:
             const sortedName = action.payload === 'asc' ?
-                state.dogs.sort(function(a, b){
-                    if(a.name.toLowerCase() > b.name.toLowerCase()) {
+                state.dogs.sort(function (a, b) {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
                         return 1;
                     }
-                    if(b.name.toLowerCase() > a.name.toLowerCase()) {
+                    if (b.name.toLowerCase() > a.name.toLowerCase()) {
                         return -1;
                     }
                     return 0
                 }) :
-                state.dogs.sort(function(a, b){
-                    if(a.name.toLowerCase() > b.name.toLowerCase()){
+                state.dogs.sort(function (a, b) {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
                         return -1;
                     }
-                    if(b.name.toLowerCase() > a.name.toLowerCase()){
+                    if (b.name.toLowerCase() > a.name.toLowerCase()) {
                         return 1;
                     }
                     return 0;
@@ -74,28 +73,22 @@ function rootReducer(state = initialState, action){
                 ...state,
                 dogs: sortedName,
             }
-        
+
         case SORT_BY_WEIGHT:
             const sortedWeight = action.payload === 'asc' ?
-                state.dogs.sort(function(a,b){
+                state.dogs.sort(function (a, b) {
                     return parseInt(a.weightMin) - parseInt(b.weightMin);
                 }) :
-                state.dogs.sort(function(a,b){
+                state.dogs.sort(function (a, b) {
                     return parseInt(b.weightMax) - parseInt(a.weightMax);
                 });
             return {
                 ...state,
                 dogs: sortedWeight,
             }
-        
-        case GET_NAME_DOGS:
-            return{
-                ...state,
-                dogs: action.payload,
-            }
 
         case 'POST_DOG':
-            return{
+            return {
                 ...state,
             }
 

@@ -68,9 +68,6 @@
     background-color: #ffe8d6;
   }
 
-.loading{
-  background-image: url('../styles/perro-corriendo.gif');
-}
 
 .container {
     display: flex;

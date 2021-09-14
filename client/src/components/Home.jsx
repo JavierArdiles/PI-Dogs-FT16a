@@ -9,6 +9,7 @@ import SearchBar from "./SearchBar";
 import '../styles/Home.css'
 import { GiDogHouse, GiSittingDog } from 'react-icons/gi';
 
+
 export default function Home() {
     const dispatch = useDispatch(); // para usar esa constante para ir despachando mis acciones.
     const allDogs = useSelector((state) => state.dogs);
@@ -28,12 +29,11 @@ export default function Home() {
         setCurrentPage(pageNumber);
     }
 
-
     // Ahora voy a traerme del estado los perros cuando el componente se monta:
     useEffect(() => {
         dispatch(getDogs()) // Este dispatch es lo mismo que hacer el mapDispatchToProps
     }, [dispatch]) // El segundo parámetro del useEffect es un array donde va todo de lo que depende el useEffect para ejecutarse.
-    // Como no depende de nada se pasa vacío.
+    
     useEffect(() => {
         dispatch(getTemperaments())
     }, [dispatch])
@@ -132,8 +132,7 @@ export default function Home() {
 
             <div className='container'>
                 {
-                    currentDogs?
-                        currentDogs.map((el) => {
+                        currentDogs?.map((el) => {
                         return (
                             <div key={el.id} className='cardHome'>
                                 <Link to={'/home/' + el.id} style={{ textDecoration: 'none' }} >
@@ -148,8 +147,7 @@ export default function Home() {
                                 </Link>
                             </div>
                         )
-                    }):
-                    <div className='loading'></div>
+                    })
                 }
             </div>
 

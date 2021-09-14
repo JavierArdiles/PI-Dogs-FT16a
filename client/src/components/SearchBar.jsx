@@ -1,7 +1,8 @@
 import React from "react";
 import { useState} from "react";
 import { useDispatch } from "react-redux";
-import { getNameDogs } from "../actions";
+import { getDogs } from "../actions";
+
 import { GiThrowingBall } from 'react-icons/gi';
 import '../styles/SearchBar.css';
 
@@ -20,9 +21,8 @@ export default function SearchBar(){
 
     function handleSubmit(e){
         e.preventDefault();
-        var found = getNameDogs(name);
+        var found = getDogs(name);
         dispatch(found)
-        //dispatch(getNameDogs(name));
         setName('');
     }
 

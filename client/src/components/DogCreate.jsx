@@ -226,7 +226,7 @@ export default function DogCreate() {
                     {input.temperaments.map(el => {
                         return (
                             
-                                <ul className='allTemps'>
+                                <ul className='allTemps' key={el}>
                                     <li>
                                         <p className='temp'><strong>{el}</strong></p>
                                         <button onClick={() => handleDeleteTemperament(el)} className='x' >X</button>

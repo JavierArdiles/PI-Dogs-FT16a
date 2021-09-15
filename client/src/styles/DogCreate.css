@@ -14,6 +14,7 @@
     height: 43px;
     border: transparent;
     border-radius: 8px;
+    cursor: pointer;
 }
 .buttonHome:hover{
     background-color: #cb997e;
@@ -57,17 +58,18 @@ input:hover{
     background-color: #ddbea9;
     border: transparent;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 select{
     cursor: pointer;
-      padding: 7px 10px;
-      height: 42px;
+    padding: 7px 10px;
+    height: 42px;
     font-size: 1em;
     color: #cb997e;
     border:2px solid rgba(0,0,0,0.2);
-      border-radius: 8px;
-      transition: all 0.25s ease;
+    border-radius: 8px;
+    transition: all 0.25s ease;
     margin: 10px;
 }
 select:hover{
@@ -86,9 +88,12 @@ select:hover{
     padding-right: 30px;
     margin: 10px;
     color: #4c5042;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 .boop:hover{
     background-color: #cb997e;
+    transform:scale(1.1);
 }
 
 .error{
@@ -96,3 +101,4 @@ select:hover{
     font-size: small;
     margin-top: 0;
 }
+

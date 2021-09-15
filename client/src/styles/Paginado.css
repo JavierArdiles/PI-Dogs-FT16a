@@ -21,3 +21,13 @@
     background-color: #cb997e;
     color: black;
   }
+
+.paginado li button:active{
+    background-color: #cb997e;
+    box-shadow: 0 1px #666;
+    transform: translateY(1px);
+}
+
+.paginado li button:focus{
+    background-color: #cb997e;
+}

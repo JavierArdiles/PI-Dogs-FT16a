@@ -25,7 +25,6 @@ server.use((req, res, next) => {
 server.use('/', routes);
 
 // Error catching endware.
-// Error handler. Cuando usamos next estamos mandando el error a esta línea de código para que lo maneje como está descrito abajo.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;

@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     dogs: [],
-    allDogs: [],// Esto lo voy a usar para los filtros. Para tener a todos los perros guardados siempre y no que me vayan cambiando los perros que tengo con cada filtro que haga.
+    allDogs: [],
     temperaments: [],
     detail: []
 }
@@ -20,7 +20,7 @@ function rootReducer(state = initialState, action) {
         case GET_DOGS:
             return {
                 ...state,
-                dogs: action.payload, // en mi estado dogs, que en un principio es un arreglo vacío, manda todo lo que te mande la acción get_dogs
+                dogs: action.payload,
                 allDogs: action.payload,
             }
         case GET_TEMPERAMENTS:

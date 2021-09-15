@@ -18,7 +18,7 @@ export function getDogs(name) {
                     .then(res => dispatch({ type: GET_DOGS, payload: res.data }))
                     .catch(err => dispatch({type: GET_DOGS, payload: err.data}))
             }
-            let json = await axios.get('http://localhost:3001/dogs', {}); // axios por default hace axios.get entonces no hace falta ponerlo.
+            let json = await axios.get('http://localhost:3001/dogs', {});
             return dispatch({
                 type: GET_DOGS,
                 payload: json.data,

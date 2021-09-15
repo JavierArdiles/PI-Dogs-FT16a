@@ -5,6 +5,7 @@
     width: 100px;
     font-size:medium;
     border-width: 2px;
+    cursor: pointer;
   }
   .fetch:hover{
     border-width: 1px;

@@ -10,7 +10,7 @@ import '../styles/DogCreate.css'
 function validate(input) {
     let errors = {};
     if (!input.name) {
-        errors.name = 'Your breed must have a name.';
+        errors.name = 'Your breed must have a name';
     }
     else if (input.name.length > 30) {
         errors.name = 'That´s way too long a name. Keep it simple!!';
@@ -19,49 +19,49 @@ function validate(input) {
         errors.heightMin = 'Minimum height is required!!';
     }
     else if (isNaN(parseInt(input.heightMin))) {
-        errors.heightMin = 'Height should be a number.';
+        errors.heightMin = 'Height should be a number';
     }
     else if (input.heightMin <= 0) {
-        errors.heightMin = 'Your breed can´t be shorter than 0.';
+        errors.heightMin = 'Your breed can´t be shorter than 0';
     }
     else if (parseInt(input.heightMin) >= parseInt(input.heightMax)) {
-        errors.heightMin = 'Minimum height should be lower than maximum height.';
+        errors.heightMin = 'Minimum height should be lower than maximum height';
     }
     else if (!input.heightMax) {
         errors.heightMax = 'Maximum height is required!!';
     }
     else if (isNaN(parseInt(input.heightMax))) {
-        errors.heightMax = 'Height should be a number.';
+        errors.heightMax = 'Height should be a number';
     }
     else if (input.heightMax > 150) {
-        errors.heightMax = 'I think 150cm is enough for a dog´s height, don´t you? 📏';
+        errors.heightMax = 'I think 150cm is enough for a dog´s height, don´t you?';
     }
     else if (!input.weightMin) {
         errors.weightMin = 'Minimum weight is required!!';
     }
     else if (isNaN(parseInt(input.weightMin))) {
-        errors.weightMin = 'Weight should be a number.';
+        errors.weightMin = 'Weight should be a number';
     }
     else if (input.weightMin <= 0) {
-        errors.weightMin = 'Your breed must weight at least more than nothingness.';
+        errors.weightMin = 'Your breed must weight at least more than nothingness';
     }
     else if (!input.weightMax) {
         errors.weightMax = 'Maximum weight is required!!';
     }
     else if (isNaN(parseInt(input.weightMax))) {
-        errors.weightMax = 'Weight should be a number.';
+        errors.weightMax = 'Weight should be a number';
     }
     else if (parseInt(input.weightMax) <= parseInt(input.weightMin)) {
-        errors.weightMax = 'Maximum weight should be higher than minimum weight.';
+        errors.weightMax = 'Maximum weight should be higher than minimum weight';
     }
     else if (input.weightMax > 200) {
-        errors.weightMax = 'We are creating a dog, not an elephant 🐘!! Keep your weight under 200.';
+        errors.weightMax = 'We are creating a dog, not an elephant 🐘!! Keep your weight under 200';
     }
     else if (!input.life_span) {
         errors.life_span = 'Life span is required!!';
     }
     else if (isNaN(parseInt(input.life_span))) {
-        errors.life_span = 'Life span should be a number.';
+        errors.life_span = 'Life span should be a number';
     }
     else if (input.life_span > 50) {
         errors.life_span = 'Saddly, dogs don´t live that long 😥';
@@ -102,8 +102,8 @@ export default function DogCreate() {
             [e.target.name]: e.target.value,
         });
         // Esta función hace lo siguiente:
-        // cada vez que modifique o agregue algo, a mi estado input, además de lo que tiene, agregale
-        // el value de lo que esté modificando. La idea es que a medida que vaya llenando los inputs
+        // Cada vez que modifique o agregue algo, a mi estado input, además de lo que tiene, le agrega
+        // el value de lo que se esté modificando. La idea es que a medida que vaya llenando los inputs
         // del formulario, me vaya modificando el estado inicial, que tiene todas las propiedades vacías.
 
         setErrors(validate({
@@ -140,7 +140,7 @@ export default function DogCreate() {
                 image: '',
                 temperaments: [],
             });
-            history.push('/home'); // Metodo del router que me redirige a la ruta que le paso. Functiona como Link.
+            history.push('/home');
         } else {
             alert('Doggie can´t be created with these data 🤷‍♂️')
         }

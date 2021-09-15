@@ -26,7 +26,7 @@
     text-decoration: none;
   }
   
-  .navbar input[type=text] {
+  .navbar input {
     padding: 6px;
     margin-top: 16px;
     font-size: 17px;
@@ -43,6 +43,7 @@
     font-size: medium;
     border-radius: 8px;
     margin-top: 10px;
+    cursor: pointer;
   }
   .elementNB:hover{
     background-color: #cb997e;

@@ -9,7 +9,6 @@ import SearchBar from "./SearchBar";
 import '../styles/Home.css'
 import { GiDogHouse, GiSittingDog, GiDogBowl } from 'react-icons/gi';
 
-
 export default function Home() {
     const dispatch = useDispatch(); // para usar esa constante para ir despachando mis acciones.
     const allDogs = useSelector((state) => state.dogs);

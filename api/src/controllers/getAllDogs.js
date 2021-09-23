@@ -10,6 +10,7 @@ const getAllDogs = async () => {
     return totalInfo;
 }
 
+
 module.exports = {
     getAllDogs,
 }

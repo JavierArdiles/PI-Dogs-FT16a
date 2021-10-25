@@ -30,7 +30,7 @@ Para poder ver el proyecto en ejecución:
 
 ## Enunciado
 
-La idea general es crear una aplicación en la cual se puedan ver distintas razas de perro junto con información relevante de las mismas utilizando la api externa [the dog api](https://thedogapi.com/) y a partir de ella poder, entre otras cosas:
+La idea general fue crear una aplicación en la cual se puedan ver distintas razas de perro junto con información relevante de las mismas utilizando la api externa [the dog api](https://thedogapi.com/) y a partir de ella poder, entre otras cosas:
 
   - Buscar perros
   - Filtrarlos / Ordenarlos
@@ -39,6 +39,9 @@ La idea general es crear una aplicación en la cual se puedan ver distintas raza
 
 
 #### Tecnologías utilizadas:
+- [ ] JavaScript
+- [ ] HTML
+- [ ] CSS
 - [ ] React
 - [ ] Redux
 - [ ] Express

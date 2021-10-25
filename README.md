@@ -24,7 +24,7 @@ Para poder ver el proyecto en ejecución:
     ```
     Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
     Adicionalmente será necesario que crees desde psql una base de datos llamada `dogs`.
- 4. Una vez completado este paso, desde la consola, y parado en la carpeta <strong>'api'</strong>, correr los comandos <strong>npm i</strong> o <strong>npm install</strong> para instalar las dependencias. Luego, <strong>npm start</strong> para levantar la base de datos y correr el Back-end.
+ 4. Una vez completado este paso, desde la consola, y parado en la carpeta <strong>'api'</strong>, correr los comandos ```npm i``` o ```npm install``` para instalar las dependencias. Luego, ```npm start``` para levantar la base de datos y correr el Back-end.
  5. Repetir los comandos en otra consola, pero parado en la carpeta <strong>'client'</strong>.
  6. El proyecto debería estarse corriendo en tu <em>localhost:3000</em> en tu navegador.
 

@@ -10,11 +10,9 @@ import '../styles/Home.css'
 import { GiDogHouse, GiSittingDog, GiDogBowl } from 'react-icons/gi';
 
 export default function Home() {
-    const dispatch = useDispatch(); // para usar esa constante para ir despachando mis acciones.
+    const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
     const allTemperaments = useSelector((state) => state.temperaments);
-    // Esto es lo mismo que hacer el mapStateToProps.
-    // Es mas facil porque de esta manera me declaro una constante y con useSelector me traigo en esa constante todo lo que está en el estado de dogs.
     
     // Paginado:
     const [currentPage, setCurrentPage] = useState(1); // En una constante me guardo el estado local actual y la otra me setea el estado actual. El state inicial es 1 porque empiezo en la primer página.
@@ -28,13 +26,13 @@ export default function Home() {
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
+    //---------------------------------------------------------------------
 
     // Ahora voy a traerme del estado los perros cuando el componente se monta:
     useEffect(() => { // useEffect simula los lifecycles de los estados locales.
         dispatch(getDogs()) // Este dispatch es lo mismo que hacer el mapDispatchToProps
     }, [dispatch]) // El segundo parámetro del useEffect es un array donde va todo de lo que depende el useEffect para ejecutarse.
     
-    // Me traigo del estado los temperamentos cuando el componente se monta:
     useEffect(() => {
         dispatch(getTemperaments())
     }, [dispatch])

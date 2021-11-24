@@ -44,6 +44,9 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
 - [ ] CSS
 - [ ] React
 - [ ] Redux
+- [ ] Node
 - [ ] Express
-- [ ] Sequelize - Postgres
+- [ ] SQL
+- [ ] Sequelize
+- [ ] Postgres
 
